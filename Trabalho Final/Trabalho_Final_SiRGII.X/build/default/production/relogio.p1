@@ -1,0 +1,102 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"4 relogio.h
+[s S1 `i 1 `i 1 `i 1 ]
+[n S1 . minuto segundo hora ]
+[; ;relogio.h: 4: typedef struct{
+[; ;relogio.h: 5: int minuto;
+[; ;relogio.h: 6: int segundo;
+[; ;relogio.h: 7: int hora;
+[; ;relogio.h: 8: }relogio;
+[; ;relogio.h: 10: void tratar_relogio(relogio *Relogio);
+"3 relogio.c
+[v _tratar_relogio `(v ~T0 @X0 1 ef1`*S1 ]
+{
+[; ;relogio.c: 3: void tratar_relogio(relogio *Relogio){
+[e :U _tratar_relogio ]
+[v _Relogio `*S1 ~T0 @X0 1 r1 ]
+[f ]
+[; ;relogio.c: 5: Relogio->segundo++;
+"5
+[e ++ . *U _Relogio 1 -> 1 `i ]
+[; ;relogio.c: 7: if(Relogio->segundo>59){
+"7
+[e $ ! > . *U _Relogio 1 -> 59 `i 3  ]
+{
+[; ;relogio.c: 8: Relogio->minuto++;
+"8
+[e ++ . *U _Relogio 0 -> 1 `i ]
+[; ;relogio.c: 9: Relogio->segundo=0;
+"9
+[e = . *U _Relogio 1 -> 0 `i ]
+"10
+}
+[e :U 3 ]
+[; ;relogio.c: 10: }
+[; ;relogio.c: 11: if(Relogio->segundo<0){
+"11
+[e $ ! < . *U _Relogio 1 -> 0 `i 4  ]
+{
+[; ;relogio.c: 12: Relogio->segundo=59;
+"12
+[e = . *U _Relogio 1 -> 59 `i ]
+[; ;relogio.c: 13: Relogio->minuto--;
+"13
+[e -- . *U _Relogio 0 -> 1 `i ]
+"14
+}
+[e :U 4 ]
+[; ;relogio.c: 14: }
+[; ;relogio.c: 16: if(Relogio->minuto>59){
+"16
+[e $ ! > . *U _Relogio 0 -> 59 `i 5  ]
+{
+[; ;relogio.c: 17: Relogio->hora++;
+"17
+[e ++ . *U _Relogio 2 -> 1 `i ]
+[; ;relogio.c: 18: Relogio->minuto=0;
+"18
+[e = . *U _Relogio 0 -> 0 `i ]
+"19
+}
+[e :U 5 ]
+[; ;relogio.c: 19: }
+[; ;relogio.c: 20: if(Relogio->minuto<0){
+"20
+[e $ ! < . *U _Relogio 0 -> 0 `i 6  ]
+{
+[; ;relogio.c: 21: Relogio->minuto=59;
+"21
+[e = . *U _Relogio 0 -> 59 `i ]
+[; ;relogio.c: 22: Relogio->hora--;
+"22
+[e -- . *U _Relogio 2 -> 1 `i ]
+"23
+}
+[e :U 6 ]
+[; ;relogio.c: 23: }
+[; ;relogio.c: 25: if(Relogio->hora>23){
+"25
+[e $ ! > . *U _Relogio 2 -> 23 `i 7  ]
+{
+[; ;relogio.c: 26: Relogio->hora=0;
+"26
+[e = . *U _Relogio 2 -> 0 `i ]
+"27
+}
+[e :U 7 ]
+[; ;relogio.c: 27: }
+[; ;relogio.c: 28: if(Relogio->hora<0){
+"28
+[e $ ! < . *U _Relogio 2 -> 0 `i 8  ]
+{
+[; ;relogio.c: 29: Relogio->hora=23;
+"29
+[e = . *U _Relogio 2 -> 23 `i ]
+"30
+}
+[e :U 8 ]
+[; ;relogio.c: 30: }
+[; ;relogio.c: 31: }
+"31
+[e :UE 2 ]
+}
